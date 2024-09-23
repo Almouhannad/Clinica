@@ -4,7 +4,7 @@ public class Result
 {
 
     #region Ctor
-    private Result(bool isSuccess, Error error)
+    public Result(bool isSuccess, Error error)
     {
         IsSuccess = isSuccess;
         Error = error;
