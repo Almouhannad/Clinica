@@ -21,8 +21,28 @@ public class Data : ValueObject
     public string FirstName { get; private set; } = null!;
     public string MiddleName { get; private set; } = null!;
     public string LastName { get; private set; } = null!;
+    public string FullName
+    {
+        get
+        {
+            return $"{FirstName} {MiddleName} {LastName}";
+        }
+    }
     public Gender Gender { get; private set; }
     public DateOnly DateOfBirth { get; private set; }
+    public int Age
+    {
+        get
+        {
+            var today = DateOnly.FromDateTime(DateTime.Today);
+            var age = today.Year - DateOfBirth.Year;
+            if (today.Month < DateOfBirth.Month || (today.Month == DateOfBirth.Month && today.Day < DateOfBirth.Day))
+            {
+                age--;
+            }
+            return age;
+        }
+    }
 
     public override IEnumerable<object> GetAtomicValues()
     {
@@ -36,11 +56,15 @@ public class Data : ValueObject
         Gender gender, DateOnly dateOfBirth)
     {
         #region Validate name
-        if (string.IsNullOrWhiteSpace(firstName) ||
-            string.IsNullOrWhiteSpace(middleName) ||
-            string.IsNullOrWhiteSpace(lastName) ||
-            firstName.Length > MaxNameLength ||
-            middleName.Length > MaxNameLength ||
+        if (
+            // Check nulls or empty
+            string.IsNullOrWhiteSpace(firstName)    ||
+            string.IsNullOrWhiteSpace(middleName)   ||
+            string.IsNullOrWhiteSpace(lastName)     ||
+
+            // Check max length
+            firstName.Length > MaxNameLength    ||
+            middleName.Length > MaxNameLength   ||
             lastName.Length > MaxNameLength)
         {
             return Result.Failure<Data>(DomainErrors.InvalidInputValues);
