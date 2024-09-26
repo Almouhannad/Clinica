@@ -3,7 +3,7 @@ public class Result<TValue> : Result
 {
     #region Ctor
 
-    private Result(TValue? value, bool isSuccess, Error error) : base(isSuccess, error)
+    internal Result(TValue? value, bool isSuccess, Error error) : base(isSuccess, error)
     {
         _value = value;
     }
