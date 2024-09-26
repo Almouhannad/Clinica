@@ -1,7 +1,7 @@
 ﻿using MediatR;
-using SharedKernel.ResultPattern;
+using SharedKernel.Shared.ResultPattern;
 
-namespace SharedKernel.CQRSPattern.Queries;
+namespace SharedKernel.Application.CQRSPattern.Queries;
 
 public interface IQueryHandler<TQuery, TResponse>
     : IRequestHandler<TQuery, Result<TResponse>>

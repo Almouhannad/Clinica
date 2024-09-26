@@ -1,7 +1,7 @@
-﻿using SharedKernel.Entities;
-using SharedKernel.ResultPattern;
+﻿using SharedKernel.Domain.Entities;
+using SharedKernel.Shared.ResultPattern;
 
-namespace SharedKernel.RepositroyPattern;
+namespace SharedKernel.Persistence.RepositroyPattern;
 
 public interface IRepository<TEntity>
         where TEntity : Entity
@@ -9,28 +9,19 @@ public interface IRepository<TEntity>
     // CRUD operations
 
     #region Create operation
-
-    public Task<Result<TEntity>> CreateAsync(TEntity entity);
-
+    public Result<TEntity> Create(TEntity entity);
     #endregion
 
     #region Read operations
-
     public Result<TEntity> GetById(Guid id);
-
     public Result<ICollection<TEntity>> GetAll();
-
     #endregion
 
     #region Update oprtation
-
-    public Task<Result> UpdateAsync(TEntity entity);
-
+    public Result Update(TEntity entity);
     #endregion
 
     #region Delete operation
-
-    public Task<Result> DeleteAsync(TEntity entity);
-
+    public Result Delete(TEntity entity);
     #endregion
 }

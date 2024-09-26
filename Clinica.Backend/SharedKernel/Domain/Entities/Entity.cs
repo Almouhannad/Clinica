@@ -1,4 +1,4 @@
-﻿namespace SharedKernel.Entities;
+﻿namespace SharedKernel.Domain.Entities;
 
 public abstract class Entity
 {
@@ -39,7 +39,7 @@ public abstract class Entity
 
     public static bool operator ==(Entity? first, Entity? second)
     {
-        return (first is not null) && (second is not null) && first.Equals(second);
+        return first is not null && second is not null && first.Equals(second);
     }
 
     public static bool operator !=(Entity? first, Entity? second)
@@ -49,7 +49,7 @@ public abstract class Entity
 
     private bool InvalidType(object? obj)
     {
-        return (obj is null) || (obj.GetType() != this.GetType());
+        return obj is null || obj.GetType() != GetType();
     }
 
     #endregion

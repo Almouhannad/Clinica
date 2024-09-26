@@ -1,6 +1,6 @@
-﻿using SharedKernel.ResultPattern;
+﻿using SharedKernel.Shared.ResultPattern;
 
-namespace SharedKernel.UnitOfWorkPattern;
+namespace SharedKernel.Persistence.UnitOfWorkPattern;
 
 public interface IUnitOfWork
 {

@@ -1,4 +1,4 @@
-﻿namespace SharedKernel.ResultPattern;
+﻿namespace SharedKernel.Shared.ResultPattern;
 public class Result<TValue> : Result
 {
     #region Ctor
@@ -27,7 +27,7 @@ public class Result<TValue> : Result
     {
         try
         {
-            Result.Create(isSuccess, error);
+            Create(isSuccess, error);
         }
         catch (Exception)
         {

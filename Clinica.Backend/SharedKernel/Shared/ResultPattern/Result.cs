@@ -1,4 +1,4 @@
-﻿namespace SharedKernel.ResultPattern;
+﻿namespace SharedKernel.Shared.ResultPattern;
 
 public class Result
 {

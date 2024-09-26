@@ -1,7 +1,7 @@
 ﻿using MediatR;
-using SharedKernel.ResultPattern;
+using SharedKernel.Shared.ResultPattern;
 
-namespace SharedKernel.CQRSPattern.Commands;
+namespace SharedKernel.Application.CQRSPattern.Commands;
 
 // No response
 public interface ICommandHandler<TCommand> : IRequestHandler<TCommand, Result>
